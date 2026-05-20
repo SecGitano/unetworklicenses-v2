@@ -1,3 +1,7 @@
+"use client";
+
+import WalletConnectButton from "@/components/WalletConnectButton";
+
 export default function Home() {
   return (
     <main className="unet-app">
@@ -53,9 +57,9 @@ export default function Home() {
               Sync Licenses
             </button>
 
-            <button className="primary-btn">
-              Connect Wallet
-            </button>
+            <div className="wallet-wrap">
+              <WalletConnectButton />
+            </div>
           </div>
         </header>
 
