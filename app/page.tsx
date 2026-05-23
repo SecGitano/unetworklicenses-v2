@@ -15,7 +15,7 @@ export default function Home() {
         alt="UNETOPS"
         style={{
           width: "100%",
-          maxWidth: "800px",
+          maxWidth: "400px",
           borderRadius: "24px",
         }}
       />
