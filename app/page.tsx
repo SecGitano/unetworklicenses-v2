@@ -1,170 +1,24 @@
-"use client";
-
-import { useMemo } from "react";
-import { useAccount, useConnect, useDisconnect } from "wagmi";
-
 export default function Home() {
-  const { address, isConnected } = useAccount();
-  const { connect, connectors, isPending } = useConnect();
-  const { disconnect } = useDisconnect();
-
-  const shortAddress = useMemo(() => {
-    if (!address) return "Not connected";
-    return `${address.slice(0, 6)}...${address.slice(-4)}`;
-  }, [address]);
-
-  const browserWallet = connectors[0];
-
   return (
-    <main className="unet-app">
-      <aside className="unet-sidebar">
-        <div className="unet-brand">
-          <div className="unet-logo">U</div>
-          <div>
-            <h2>Unity Network</h2>
-            <p>Connected License Ops</p>
-          </div>
-        </div>
-
-        <nav className="unet-nav">
-          <button className="active">Overview</button>
-          <button>Wallet</button>
-          <button>Licenses</button>
-          <button>Nodes</button>
-          <button>Marketplace</button>
-          <button>Rewards</button>
-          <button>Transactions</button>
-          <button>Settings</button>
-        </nav>
-
-        <div className="sidebar-card">
-          <div className="orb"></div>
-          <h3>UNITY NODE</h3>
-          <p>
-            EDGE INFRASTRUCTURE
-            <br />
-            POWERED BY UNETWORK
-          </p>
-        </div>
-      </aside>
-
-      <section className="unet-main">
-        <header className="topbar">
-          <input
-            className="search"
-            placeholder="Search by license id, node id, wallet, device..."
-          />
-
-          <div className="top-actions">
-            <button className="ghost-btn">Sync Licenses</button>
-
-            {!isConnected ? (
-              <button
-                className="primary-btn"
-                disabled={isPending || !browserWallet}
-                onClick={() => {
-                  if (browserWallet) {
-                    connect({ connector: browserWallet });
-                  }
-                }}
-              >
-                {isPending ? "Connecting..." : "Connect Wallet"}
-              </button>
-            ) : (
-              <button className="primary-btn" onClick={() => disconnect()}>
-                Disconnect
-              </button>
-            )}
-          </div>
-        </header>
-
-        <section className="hero">
-          <span className="hero-kicker">
-            UNITY NETWORK • CONNECTED LICENSE MANAGEMENT
-          </span>
-
-          <h1>
-            The infrastructure cockpit is now rebuilt for licenses, nodes,
-            rewards and marketplace operations.
-          </h1>
-
-          <p>
-            Wallet status: <strong>{isConnected ? "Connected" : "Offline"}</strong>
-            <br />
-            Address: <strong>{shortAddress}</strong>
-          </p>
-
-          <div className="hero-tags">
-            <button className="tag active">All</button>
-            <button className="tag">Online</button>
-            <button className="tag">Offline</button>
-            <button className="tag">Rewards</button>
-            <button className="tag">Marketplace</button>
-          </div>
-        </section>
-
-        <section className="stats-grid">
-          <div className="stat-card">
-            <span>Wallet</span>
-            <h2>{isConnected ? "ONLINE" : "OFFLINE"}</h2>
-            <p>{shortAddress}</p>
-          </div>
-
-          <div className="stat-card">
-            <span>Total Licenses</span>
-            <h2>1199</h2>
-            <p>Connected infrastructure licenses</p>
-          </div>
-
-          <div className="stat-card">
-            <span>Rewards</span>
-            <h2>45,789</h2>
-            <p>Pending reward distribution</p>
-          </div>
-
-          <div className="stat-card">
-            <span>Network Status</span>
-            <h2>99.98%</h2>
-            <p>World Mobile operational uptime</p>
-          </div>
-        </section>
-
-        <section className="dashboard-grid">
-          <div className="panel large">
-            <h3>Rewards Overview</h3>
-            <div className="fake-chart"></div>
-          </div>
-
-          <div className="panel">
-            <h3>Activity Feed</h3>
-            <ul className="activity-list">
-              <li>New node activated</li>
-              <li>Rewards distributed</li>
-              <li>Marketplace sync completed</li>
-              <li>Infrastructure update deployed</li>
-            </ul>
-          </div>
-
-          <div className="panel">
-            <h3>Connected Regions</h3>
-            <div className="region-grid">
-              <div>Europe</div>
-              <div>North America</div>
-              <div>Asia</div>
-              <div>Africa</div>
-            </div>
-          </div>
-
-          <div className="panel">
-            <h3>Recent Messaging</h3>
-            <ul className="activity-list">
-              <li>Maintenance scheduled</li>
-              <li>Validator update completed</li>
-              <li>License reassignment executed</li>
-            </ul>
-          </div>
-        </section>
-      </section>
+    <main
+      style={{
+        minHeight: "100vh",
+        background: "#050505",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: "24px",
+      }}
+    >
+      <img
+        src="/unetops-placeholder.png"
+        alt="UNETOPS"
+        style={{
+          width: "100%",
+          maxWidth: "1100px",
+          borderRadius: "24px",
+        }}
+      />
     </main>
   );
 }
